@@ -2,7 +2,7 @@ const contributors = [
   {
     username: "Sabari-Vijayan",
     name: "Sabari",
-    quote: "Version control is the first step toward collaborative magic."
+    quote: "Aliens are real."
   },
   {
     username: "octocat",
