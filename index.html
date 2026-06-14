@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>mashithandu | Interactive Git & GitHub Guide</title>
+  <meta name="description" content="An interactive website designed to teach the essentials of Git and GitHub, version control history, best practices, and collaborative workflows.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Ambient background glows -->
+  <div class="glow-bg"></div>
+  <div class="glow-bg-left"></div>
+
+  <!-- Navigation Bar -->
+  <header class="site-header">
+    <nav class="nav-container">
+      <a href="index.html" class="logo">
+        <span class="logo-git">mashi</span>thandu.
+      </a>
+      <button class="mobile-menu-btn" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="practices.html">Best Practices</a></li>
+        <li><a href="contributors.html">Contributors Wall</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <span class="hero-tag">Workshop Guide & Sandbox</span>
+    <h1>Learn Git & GitHub.<br>The Collaborative Essentials.</h1>
+    <p>A minimalist interactive guide designed for our Git & GitHub learning session. Master local version control, branch management, collaboration, and submit your first Pull Request to join our Wall of Contributors.</p>
+    <div class="hero-actions">
+      <a href="#essentials" class="btn btn-primary">Start Learning</a>
+      <a href="contributors.html" class="btn btn-secondary">Contributors Wall</a>
+    </div>
+  </section>
+
+  <main class="main-container">
+    
+    <!-- History Timeline -->
+    <section id="history" style="margin-bottom: 5rem;">
+      <h2 class="section-title" style="text-align: center;">A Brief History</h2>
+      <p class="section-desc" style="text-align: center; margin: 0 auto 3rem auto;">Understanding how Git and GitHub came to shape modern software engineering.</p>
+      
+      <div class="history-container">
+        
+        <div class="timeline-item">
+          <div class="timeline-badge"></div>
+          <div class="timeline-content">
+            <span class="timeline-date">2005</span>
+            <h3>Linus Torvalds invents Git</h3>
+            <p>Frustrated by licensing changes in BitKeeper (the tool used to manage the Linux kernel), Linus Torvalds designed Git in under two weeks. He aimed for speed, decentralization, and robust branch management.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-badge"></div>
+          <div class="timeline-content">
+            <span class="timeline-date">2008</span>
+            <h3>GitHub is Launched</h3>
+            <p>Tom Preston-Werner, Chris Wanstrath, P. J. Hyett, and Scott Chacon built GitHub using Ruby on Rails. They wanted to make hosting and sharing repositories effortless, turning Git into a social coding network.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-badge"></div>
+          <div class="timeline-content">
+            <span class="timeline-date">2018</span>
+            <h3>Microsoft Acquires GitHub</h3>
+            <p>Microsoft acquired GitHub for $7.5 billion. Since the acquisition, GitHub has made private repositories free for all users and expanded into CI/CD, cloud environments, and AI collaboration.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-badge"></div>
+          <div class="timeline-content">
+            <span class="timeline-date">2020+</span>
+            <h3>GitHub Actions & Copilot</h3>
+            <p>With the integration of GitHub Actions (native automation/CI-CD) and GitHub Copilot (AI-assisted coding), GitHub transformed from a repository hosting platform into a comprehensive developer lifecycle hub.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Git vs GitHub Comparison -->
+    <section id="git-vs-github" style="margin-bottom: 5rem;">
+      <div class="card grid-2" style="align-items: center; padding: 3rem;">
+        <div>
+          <h2 class="section-title">Git vs. GitHub</h2>
+          <p class="section-desc" style="margin-bottom: 0;">They are often confused, but they serve completely different roles in version control and collaboration.</p>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 1rem;">
+          <div style="border-bottom: 1px solid var(--border-color); padding-bottom: 1rem;">
+            <h3 style="font-size: 1.1rem; margin-bottom: 0.25rem;"><span style="color: #F05032;">Git</span> (The Local Engine)</h3>
+            <p style="font-size: 0.9rem; color: var(--text-secondary);">A distributed version control system running on your local machine. It tracks history, handles branches, and lets you undo changes without needing any internet connection.</p>
+          </div>
+          <div>
+            <h3 style="font-size: 1.1rem; margin-bottom: 0.25rem;">GitHub (The Cloud Hub)</h3>
+            <p style="font-size: 0.9rem; color: var(--text-secondary);">A cloud-based hosting service for Git repositories. It adds a web interface, collaborative code reviews (Pull Requests), project tracking, issue discussions, and CI/CD pipelines.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Git Essentials Cheat Sheet -->
+    <section id="essentials" style="margin-bottom: 5rem; scroll-margin-top: 6rem;">
+      <h2 class="section-title">Git Essentials Dashboard</h2>
+      <p class="section-desc">Click through the essential commands below to understand the core developer loop. Click the copy icon to copy commands directly.</p>
+
+      <div class="dashboard-container">
+        <!-- Sidebar Navigation -->
+        <div class="dashboard-nav">
+          <button class="dash-btn active" data-tab="tab-init">git init</button>
+          <button class="dash-btn" data-tab="tab-clone">git clone</button>
+          <button class="dash-btn" data-tab="tab-status">git status</button>
+          <button class="dash-btn" data-tab="tab-add">git add</button>
+          <button class="dash-btn" data-tab="tab-commit">git commit</button>
+          <button class="dash-btn" data-tab="tab-push">git push</button>
+          <button class="dash-btn" data-tab="tab-pull">git pull</button>
+        </div>
+
+        <!-- Dashboard Content Panels -->
+        <div class="dashboard-content">
+          
+          <!-- git init -->
+          <div class="dash-panel active" id="tab-init">
+            <h3 class="panel-title">Initialize a Repository</h3>
+            <p class="panel-desc">Prepares your current folder to track changes and creates a hidden <code>.git</code> folder where the local database resides.</p>
+            <div class="command-box">
+              <span class="command-text">git init</span>
+              <button class="copy-btn" title="Copy to clipboard">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              </button>
+            </div>
+            <p style="font-size: 0.95rem; color: var(--text-secondary);">Run this once at the start of a new project. After running, you can create branches, check status, and save local commits.</p>
+          </div>
+
+          <!-- git clone -->
+          <div class="dash-panel" id="tab-clone">
+            <h3 class="panel-title">Clone an Existing Repository</h3>
+            <p class="panel-desc">Downloads a copy of an entire project repository from a remote server (like GitHub) to your local computer.</p>
+            <div class="command-box">
+              <span class="command-text">git clone https://github.com/username/repository.git</span>
+              <button class="copy-btn" title="Copy to clipboard">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              </button>
+            </div>
+            <p style="font-size: 0.95rem; color: var(--text-secondary);">This configures the origin remote link automatically. It creates a folder matching the repo name, downloads all historical commits, and checks out the default branch.</p>
+          </div>
+
+          <!-- git status -->
+          <div class="dash-panel" id="tab-status">
+            <h3 class="panel-title">Check Status of Changes</h3>
+            <p class="panel-desc">Displays the status of the files in your directory: which files have changes that are staged, unstaged, or untracked.</p>
+            <div class="command-box">
+              <span class="command-text">git status</span>
+              <button class="copy-btn" title="Copy to clipboard">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              </button>
+            </div>
+            <p style="font-size: 0.95rem; color: var(--text-secondary);">This is the safest command to run frequently. It helps you see what state your workspace is in and what you should do next (e.g., stage or commit changes).</p>
+          </div>
+
+          <!-- git add -->
+          <div class="dash-panel" id="tab-add">
+            <h3 class="panel-title">Stage Your Changes</h3>
+            <p class="panel-desc">Moves changes from your Working Directory to the Staging Area, registering them for the next commit snapshot.</p>
+            <div class="command-box">
+              <span class="command-text">git add .</span>
+              <button class="copy-btn" title="Copy to clipboard">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              </button>
+            </div>
+            <p style="font-size: 0.95rem; color: var(--text-secondary);">Using <code>.</code> stages all files in the current folder. You can also specify single files (e.g. <code>git add index.html</code>) to choose exactly what goes into the commit.</p>
+          </div>
+
+          <!-- git commit -->
+          <div class="dash-panel" id="tab-commit">
+            <h3 class="panel-title">Record a Commit Snapshot</h3>
+            <p class="panel-desc">Saves your staged snapshot into your local repository's history timeline. Includes a short message explaining the change.</p>
+            <div class="command-box">
+              <span class="command-text">git commit -m "feat: implement hero section layout"</span>
+              <button class="copy-btn" title="Copy to clipboard">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              </button>
+            </div>
+            <p style="font-size: 0.95rem; color: var(--text-secondary);">Always use descriptive commit messages. Every commit receives a unique SHA-1 identifier key, allowing you to rollback or reference it later.</p>
+          </div>
+
+          <!-- git push -->
+          <div class="dash-panel" id="tab-push">
+            <h3 class="panel-title">Push Commits to Remote</h3>
+            <p class="panel-desc">Uploads all local branch commits to the remote repository (e.g. GitHub), sharing your changes with the team.</p>
+            <div class="command-box">
+              <span class="command-text">git push origin main</span>
+              <button class="copy-btn" title="Copy to clipboard">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              </button>
+            </div>
+            <p style="font-size: 0.95rem; color: var(--text-secondary);">Here, <code>origin</code> represents the remote server URL, and <code>main</code> is the destination branch. This syncs your local history timeline with the cloud.</p>
+          </div>
+
+          <!-- git pull -->
+          <div class="dash-panel" id="tab-pull">
+            <h3 class="panel-title">Pull Latest Remote Changes</h3>
+            <p class="panel-desc">Downloads commits from the remote server and merges them directly into your current local active branch.</p>
+            <div class="command-box">
+              <span class="command-text">git pull origin main</span>
+              <button class="copy-btn" title="Copy to clipboard">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              </button>
+            </div>
+            <p style="font-size: 0.95rem; color: var(--text-secondary);">Run this before starting any work to make sure you have the latest updates from your team. This helps prevent merge conflicts later.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Git Sandbox / Visualizer Simulator -->
+    <section id="sandbox" style="margin-bottom: 5rem;">
+      <h2 class="section-title">Git Lifecycle Visualizer</h2>
+      <p class="section-desc">Experience how files travel between local structures and GitHub. Edit a mock file and execute Git operations to see the transition.</p>
+      
+      <div class="simulator-card">
+        <div class="sim-header">
+          <h3 style="font-size: 1.25rem;">Interactive Terminal Playground</h3>
+          <div class="sim-controls">
+            <button id="sim-add" class="sim-btn primary-action">git add</button>
+            <button id="sim-commit" class="sim-btn primary-action">git commit</button>
+            <button id="sim-push" class="sim-btn primary-action">git push</button>
+            <button id="sim-reset" class="sim-btn">Reset</button>
+          </div>
+        </div>
+
+        <div class="sim-board">
+          
+          <!-- Working Directory -->
+          <div class="sim-column" id="col-working">
+            <div class="sim-column-title">Working Directory</div>
+            <span class="sim-arrow-flow">→</span>
+          </div>
+
+          <!-- Staging Area -->
+          <div class="sim-column" id="col-staging">
+            <div class="sim-column-title">Staging Area</div>
+            <span class="sim-arrow-flow">→</span>
+          </div>
+
+          <!-- Local Repository -->
+          <div class="sim-column" id="col-local">
+            <div class="sim-column-title">Local Repo (.git)</div>
+            <span class="sim-arrow-flow">→</span>
+          </div>
+
+          <!-- Remote Repository -->
+          <div class="sim-column" id="col-remote">
+            <div class="sim-column-title">Remote (GitHub)</div>
+          </div>
+
+        </div>
+
+        <div class="sim-message-log" id="sim-log">
+          File index.html has modifications. Ready to stage using 'git add'.
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <span class="footer-logo">mashithandu.</span>
+      <p>Prepared for the Git/GitHub Hands-on Session. Designed for clarity & readability.</p>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="practices.html">Best Practices</a></li>
+        <li><a href="contributors.html">Wall</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

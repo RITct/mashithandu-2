@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Best Practices | mashithandu</title>
+  <meta name="description" content="Explore best practices for branching, clean commit messages, pull request etiquette, and version control safety.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Ambient background glows -->
+  <div class="glow-bg"></div>
+  <div class="glow-bg-left"></div>
+
+  <!-- Navigation Bar -->
+  <header class="site-header">
+    <nav class="nav-container">
+      <a href="index.html" class="logo">
+        <span class="logo-git">mashi</span>thandu.
+      </a>
+      <button class="mobile-menu-btn" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="practices.html" class="active">Best Practices</a></li>
+        <li><a href="contributors.html">Contributors Wall</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <span class="hero-tag">Collaboration Standards</span>
+    <h1>Professional Git Workflow.<br>The Best Practices.</h1>
+    <p>Writing code is only half the battle. Working effectively with a team requires maintaining a clean history, descriptive branch management, and collaborative review structures.</p>
+  </section>
+
+  <main class="main-container">
+    
+    <!-- Anchor Nav -->
+    <div class="practice-nav-anchors">
+      <a href="#branching">1. Branching Strategies</a>
+      <a href="#commits">2. Commit Hygiene</a>
+      <a href="#pull-requests">3. Pull Request Etiquette</a>
+    </div>
+
+    <!-- 1. Branching Section -->
+    <section id="branching" class="practice-section" style="scroll-margin-top: 6rem;">
+      <div class="practice-header">
+        <span class="practice-number">Section 01</span>
+        <h2>Descriptive Branching Strategies</h2>
+        <p>In a team environment, multiple developers work on the same codebase simultaneously. We use branching to isolate work and prevent breaking the production-ready code.</p>
+      </div>
+
+      <h3>GitHub Flow Lifecycle</h3>
+      <p>The standard collaboration cycle relies on short-lived feature branches merged into the main production branch via Pull Requests.</p>
+
+      <!-- CSS Graph visualizer -->
+      <div class="branch-graph-container">
+        <div class="branch-graph">
+          <!-- Main branch row -->
+          <div class="graph-row">
+            <div class="graph-row-title">main</div>
+            <div class="graph-node-container">
+              <div class="graph-node main-node" title="Initial release commit">
+                <span class="graph-node-label">v1.0.0 (a1b2c3d)</span>
+              </div>
+              <!-- Gap node space -->
+              <div style="width: 20px;"></div>
+              <div style="width: 20px;"></div>
+              <div style="width: 20px;"></div>
+              <div class="graph-node main-node" title="Merge pull request #12 from feature/auth">
+                <span class="graph-node-label">Merge Pull Request (f8e9d0c)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Feature branch row -->
+          <div class="graph-row">
+            <div class="graph-row-title">feature/auth</div>
+            <!-- Branch line -->
+            <div class="branch-connection-line"></div>
+            <!-- Merge line -->
+            <div class="merge-connection-line"></div>
+            
+            <div class="graph-node-container" style="padding-left: 92px;">
+              <div class="graph-node feature-node" title="Draft authentication layout">
+                <span class="graph-node-label">feat: add login page (c4d5e6f)</span>
+              </div>
+              <div class="graph-node feature-node" title="Integrate OAuth library">
+                <span class="graph-node-label">feat: support Google Sign-in (b7a8c9d)</span>
+              </div>
+              <div class="graph-node feature-node" title="Write integration test cases">
+                <span class="graph-node-label">test: add auth flow tests (e5f6g7h)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p style="font-size: 0.85rem; color: var(--text-secondary); text-align: center; margin-bottom: 2rem;">Hover over nodes in the graph to inspect commit hashes and messages.</p>
+
+      <div class="practice-grid-comparison">
+        <div class="comparison-box good">
+          <div class="comparison-title good-title">
+            <span>✓</span> Good Branch Practices
+          </div>
+          <ul class="comparison-list">
+            <li>Keep branch names prefix-scoped: <code>feat/user-auth</code>, <code>bugfix/refresh-token</code>, <code>docs/readme-updates</code>.</li>
+            <li>Create separate branches for every separate task.</li>
+            <li>Delete branches on the remote repository after they are merged.</li>
+            <li>Pull updates from <code>main</code> daily to handle conflicts incrementally.</li>
+          </ul>
+        </div>
+        
+        <div class="comparison-box bad">
+          <div class="comparison-title bad-title">
+            <span>✗</span> Bad Branch Practices
+          </div>
+          <ul class="comparison-list">
+            <li>Committing directly to the <code>main</code> or <code>master</code> branch.</li>
+            <li>Creating ambiguous, generic branch names: <code>updates</code>, <code>fix</code>, <code>my-branch</code>, <code>test1</code>.</li>
+            <li>Keeping merged branches on remote forever.</li>
+            <li>Combining unrelated features in one single branch.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Commit Section -->
+    <section id="commits" class="practice-section" style="scroll-margin-top: 6rem;">
+      <div class="practice-header">
+        <span class="practice-number">Section 02</span>
+        <h2>Commit Hygiene & Message Guidelines</h2>
+        <p>A Git commit is more than a file backup; it is a ledger entry. Clean, structured commits make tracking bugs and understanding history simple.</p>
+      </div>
+
+      <h3>Conventional Commit Structure</h3>
+      <p>A highly accepted standard in modern software teams is the Conventional Commit specification: <code>type(scope): brief message</code>.</p>
+
+      <div class="card" style="margin-bottom: 2rem; background-color: var(--bg-primary); border: 1px solid var(--border-color); padding: 1.5rem 2rem;">
+        <h4 style="font-family: 'JetBrains Mono', monospace; font-size: 1rem; margin-bottom: 1rem;">Types of Commits:</h4>
+        <ul style="font-size: 0.9rem; padding-left: 1.25rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem;">
+          <li><code>feat:</code> Adding a new feature</li>
+          <li><code>fix:</code> Patching a bug</li>
+          <li><code>docs:</code> Writing documentation</li>
+          <li><code>style:</code> Whitespace, formatting</li>
+          <li><code>refactor:</code> Code rewrite (no features/fixes)</li>
+          <li><code>test:</code> Adding or fixing tests</li>
+        </ul>
+      </div>
+
+      <div class="practice-grid-comparison">
+        <div class="comparison-box good">
+          <div class="comparison-title good-title">
+            <span>✓</span> Good Commits
+          </div>
+          <ul class="comparison-list">
+            <li><code>git commit -m "feat(ui): add dashboard dark mode"</code></li>
+            <li><code>git commit -m "fix(api): resolve CORS preflight errors"</code></li>
+            <li>Keep commits atomic (one logical feature per commit).</li>
+            <li>Verify code runs before committing.</li>
+          </ul>
+        </div>
+        
+        <div class="comparison-box bad">
+          <div class="comparison-title bad-title">
+            <span>✗</span> Bad Commits
+          </div>
+          <ul class="comparison-list">
+            <li><code>git commit -m "fix stuff"</code></li>
+            <li><code>git commit -m "temp work in progress"</code></li>
+            <li><code>git commit -m "completed page layout and hooked API database and added authentication"</code></li>
+            <li>Committing broken code that prevents build compiler execution.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Pull Request Section -->
+    <section id="pull-requests" class="practice-section" style="scroll-margin-top: 6rem;">
+      <div class="practice-header">
+        <span class="practice-number">Section 03</span>
+        <h2>Pull Request Etiquette</h2>
+        <p>Pull Requests (PRs) represent where code review, validation, and collaboration occur. A good PR is easy to review, quick to verify, and well-described.</p>
+      </div>
+
+      <h3>A Perfect Pull Request Description Template</h3>
+      <p style="margin-bottom: 1rem;">Provide context so reviewers don't have to read every line of code to understand your intent.</p>
+      
+      <div class="command-box" style="flex-direction: column; align-items: stretch; height: auto;">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; margin-bottom: 0.75rem;">
+          <span style="font-size: 0.8rem; font-family: 'Outfit', sans-serif; font-weight: 600; color: var(--text-secondary);">Markdown Description Template</span>
+          <button class="copy-btn" title="Copy to clipboard">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+          </button>
+        </div>
+        <pre class="command-text" style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; line-height: 1.5; white-space: pre-wrap; margin: 0; padding: 0.5rem 0;">## Description
+Brief summary of the changes introduced by this pull request.
+
+## Related Issues
+Closes #123
+
+## How Has This Been Tested?
+- [ ] Tested locally on Chrome & Firefox.
+- [ ] Added integration tests for authentication.
+
+## Screenshots (if applicable)
+[Paste screenshots here]</pre>
+      </div>
+
+      <div class="practice-grid-comparison">
+        <div class="comparison-box good">
+          <div class="comparison-title good-title">
+            <span>✓</span> Good PR Etiquette
+          </div>
+          <ul class="comparison-list">
+            <li>Keep PRs small (under 200 lines of code changes is ideal).</li>
+            <li>Run tests and lint check tools locally before opening a PR.</li>
+            <li>Write comments on your own code diff to explain tricky logic to reviewers.</li>
+            <li>Accept review feedback constructively.</li>
+          </ul>
+        </div>
+        
+        <div class="comparison-box bad">
+          <div class="comparison-title bad-title">
+            <span>✗</span> Bad PR Etiquette
+          </div>
+          <ul class="comparison-list">
+            <li>Opening massive PRs with 1000+ line changes.</li>
+            <li>Leaving the description text blank or writing "Fixed issues."</li>
+            <li>Merging a branch before tests/CI builds successfully run.</li>
+            <li>Taking constructive code reviews personally.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <span class="footer-logo">mashithandu.</span>
+      <p>Prepared for the Git/GitHub Hands-on Session. Designed for clarity & readability.</p>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="practices.html">Best Practices</a></li>
+        <li><a href="contributors.html">Wall</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

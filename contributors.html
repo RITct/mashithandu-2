@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contributors Wall | mashithandu</title>
+  <meta name="description" content="View the participants who have successfully completed the Pull Request workshop activity and joined our Wall of Contributors.">
+  <link rel="stylesheet" href="style.css">
+  <!-- Import contributors data first so script.js can access it -->
+  <script src="data/contributors.js"></script>
+</head>
+<body>
+  <!-- Ambient background glows -->
+  <div class="glow-bg"></div>
+  <div class="glow-bg-left"></div>
+
+  <!-- Navigation Bar -->
+  <header class="site-header">
+    <nav class="nav-container">
+      <a href="index.html" class="logo">
+        <span class="logo-git">mashi</span>thandu.
+      </a>
+      <button class="mobile-menu-btn" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="practices.html">Best Practices</a></li>
+        <li><a href="contributors.html" class="active">Contributors Wall</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <span class="hero-tag">Participant Showcase</span>
+    <h1>Wall of Contributors</h1>
+    <p>Every person on this wall completed their first version control cycle by forking this repository, editing the database, committing, and opening a Pull Request.</p>
+  </section>
+
+  <main class="main-container">
+
+    <!-- Tools bar (Search & Stats) -->
+    <div class="contributors-tools">
+      <div class="search-wrapper">
+        <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+        </svg>
+        <input type="text" id="search-input" class="search-input" placeholder="Search contributors or quotes...">
+      </div>
+      
+      <div style="font-family: 'Outfit', sans-serif; font-size: 0.95rem; font-weight: 500; background-color: var(--bg-secondary); border: 1px solid var(--border-color); padding: 0.6rem 1.2rem; border-radius: var(--radius-sm); box-shadow: var(--shadow-sm);">
+        Total Contributors: <span id="contrib-count" style="font-weight: 700; color: var(--highlight-blue);">0</span>
+      </div>
+    </div>
+
+    <!-- Grid of Contributor Cards -->
+    <section id="contributors-grid" class="contributors-grid">
+      <!-- Generated dynamically by script.js -->
+    </section>
+
+    <!-- Banner to prompt joining -->
+    <section class="join-banner" style="margin-top: 5rem;">
+      <h2>Your Name Belongs Here!</h2>
+      <p>Submit your first contribution right now to learn the actual Git flow and see your avatar load live on this screen.</p>
+      <button id="open-modal" class="btn btn-primary">Join the Wall</button>
+    </section>
+
+  </main>
+
+  <!-- Walkthrough Modal -->
+  <div class="modal" id="guide-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 style="font-size: 1.3rem;">Step-by-Step Contribution Guide</h3>
+        <button class="modal-close" id="close-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        
+        <div class="guide-step" data-step="1">
+          <h4>Fork the Repository</h4>
+          <p>Go to the main repository page on GitHub and click the <strong>Fork</strong> button in the top right corner. This creates a personal copy of the project in your GitHub profile.</p>
+        </div>
+
+        <div class="guide-step" data-step="2">
+          <h4>Clone Your Fork</h4>
+          <p>Copy your fork's URL and clone it to your local machine using the terminal:</p>
+          <div class="command-box">
+            <span class="command-text" style="font-size: 0.8rem;">git clone https://github.com/YOUR_USERNAME/mashithandu-2.git</span>
+            <button class="copy-btn" title="Copy to clipboard">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="guide-step" data-step="3">
+          <h4>Create a Feature Branch</h4>
+          <p>Navigate into the directory and create a separate branch to isolate your edits:</p>
+          <div class="command-box">
+            <span class="command-text" style="font-size: 0.8rem;">git checkout -b add-my-github</span>
+            <button class="copy-btn" title="Copy to clipboard">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="guide-step" data-step="4">
+          <h4>Add Your Info to the Database</h4>
+          <p>Open <code>data/contributors.js</code> in your editor. Append your entry at the bottom of the array following this exact format:</p>
+          <div class="command-box" style="flex-direction: column; align-items: stretch; height: auto;">
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 0.25rem; margin-bottom: 0.5rem;">
+              <span style="font-size: 0.75rem; color: var(--text-secondary);">contributors.js template</span>
+              <button class="copy-btn" title="Copy to clipboard">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              </button>
+            </div>
+            <pre class="command-text" style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; margin: 0; padding: 0.25rem 0; white-space: pre-wrap;">  {
+    username: "YOUR_GITHUB_USERNAME",
+    name: "YOUR_NAME",
+    quote: "YOUR_FAVORITE_QUOTE"
+  }</pre>
+          </div>
+        </div>
+
+        <div class="guide-step" data-step="5">
+          <h4>Commit and Push</h4>
+          <p>Stage the file, create a commit, and push the branch to your GitHub fork repository:</p>
+          <div class="command-box" style="flex-direction: column; align-items: stretch; height: auto; gap: 0.5rem;">
+            <div>
+              <span class="command-text" style="font-size: 0.8rem; display: block; margin-bottom: 0.25rem;">git add data/contributors.js</span>
+              <span class="command-text" style="font-size: 0.8rem; display: block; margin-bottom: 0.25rem;">git commit -m "feat: add my github handle to wall"</span>
+              <span class="command-text" style="font-size: 0.8rem; display: block;">git push origin add-my-github</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="guide-step" data-step="6">
+          <h4>Create a Pull Request</h4>
+          <p>Go back to the original repository on GitHub. You should see a banner asking you to **Compare & pull request**. Click it, write a brief description, and submit! Once merged, you'll be on the wall.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <span class="footer-logo">mashithandu.</span>
+      <p>Prepared for the Git/GitHub Hands-on Session. Designed for clarity & readability.</p>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="practices.html">Best Practices</a></li>
+        <li><a href="contributors.html">Wall</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
